@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from .local_settings import *
 from pathlib import Path
 from myportal import search_fields
 
@@ -18,13 +19,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i*%r=tw(8fy%3#dskc-0u&vof39iyb6sa5xbg-mqzduj2zino&'
-
-# Your portal credentials for enabling user login via Globus Auth
-SOCIAL_AUTH_GLOBUS_KEY = '8550c17a-97df-49f3-b4eb-add9a289dd22'
-SOCIAL_AUTH_GLOBUS_SECRET = 'L/ytluFxtni/xY+k3fjpq4M3PX4lEYtl/YiO3jDMwsA='
 
 # This is a general Django setting if views need to redirect to login
 # https://docs.djangoproject.com/en/3.2/ref/settings/#login-url
