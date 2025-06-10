@@ -46,7 +46,7 @@ set -e
 run_web() {
     echo "Starting web server..."
     python manage.py migrate --noinput
-    exec gunicorn cirrus_demo.wsgi:application \
+    exec gunicorn myportal.wsgi:application \
         --bind 0.0.0.0:8000 \
         --workers 3 \
         --timeout 120 \
