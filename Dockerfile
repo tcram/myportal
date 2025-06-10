@@ -46,6 +46,7 @@ set -e
 run_web() {
     echo "Starting web server..."
     python manage.py migrate --noinput
+    python manage.py collectstatic --noinput
     exec gunicorn myportal.wsgi:application \
         --bind 0.0.0.0:8000 \
         --workers 3 \
@@ -61,13 +62,13 @@ run_web() {
 run_worker() {
     echo "Starting Celery worker..."
     python manage.py migrate --noinput
-    exec celery -A cirrus_demo worker -l info
+    exec celery -A myportal worker -l info
 }
 
 # Function to run Flower dashboard
 run_flower() {
     echo "Starting Flower dashboard..."
-    exec celery -A cirrus_demo flower --port=5555 --url_prefix=flower
+    exec celery -A myportal flower --port=5555 --url_prefix=flower
 }
 
 # Check command argument
