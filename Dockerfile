@@ -9,6 +9,7 @@ EXPOSE 8000
 
 # Set environment variables.
 ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
     PORT=8000 \
     DJANGO_SETTINGS_MODULE=myportal.settings \
     PYTHONPATH=/app
@@ -27,6 +28,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
 WORKDIR /app
 
 # Copy the requirements first to leverage Docker cache
+RUN pip install --upgrade pip
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 RUN pip install "gunicorn==20.1.0"
