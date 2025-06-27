@@ -10,7 +10,6 @@ EXPOSE 8000
 # Set environment variables.
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    PORT=8000 \
     DJANGO_SETTINGS_MODULE=myportal.settings \
     PYTHONPATH=/app
 
