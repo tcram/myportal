@@ -1,0 +1,27 @@
+services:
+  django_myportal:
+    build:
+      context: .
+    volumes:
+      - ./myportal/static:/app/static
+      - sqllite_db:/app
+      - django_logs:/app/logs
+    expose:
+      - "8000"
+
+  nginx:
+    build:
+      context: ./nginx
+    volumes:
+      - ./myportal/static:/app/static
+      - nginx_logs:/var/log/nginx
+    ports:
+      - "8000:80"
+    depends_on:
+      - django_myportal
+
+volumes:
+  static:
+  sqllite_db:
+  django_logs:
+  nginx_logs:
